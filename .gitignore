@@ -1,0 +1,5 @@
+src/angular/platforms/android/assets/www/src
+src/angular/platforms/android/bin
+src/angular/platforms/ios/www/src
+src/angular/www/node_modules
+src/angular/www.backup
