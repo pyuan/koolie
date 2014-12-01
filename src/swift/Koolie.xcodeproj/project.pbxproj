@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BF111CE1A2CFE9700E98C22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF111CD1A2CFE9700E98C22 /* ViewController.swift */; };
+		1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111D21A2CFE9700E98C22 /* Images.xcassets */; };
+		1BF111E21A2CFE9800E98C22 /* KoolieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF111E11A2CFE9800E98C22 /* KoolieTests.swift */; };
+		1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111F41A2D032700E98C22 /* LaunchScreen.xib */; };
+		1BF111F91A2D032700E98C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111F61A2D032700E98C22 /* Main.storyboard */; };
+		1BF111FC1A2D042600E98C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF111FB1A2D042600E98C22 /* AppDelegate.swift */; };
+		1BF1121A1A2D050D00E98C22 /* Koolie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BF112101A2D050D00E98C22 /* Koolie.xcdatamodeld */; };
+		1BF1121B1A2D050D00E98C22 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BF111DC1A2CFE9800E98C22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BF111BB1A2CFE9700E98C22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BF111C21A2CFE9700E98C22;
+			remoteInfo = Koolie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BF111C31A2CFE9700E98C22 /* Koolie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koolie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BF111C71A2CFE9700E98C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BF111CD1A2CFE9700E98C22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1BF111D21A2CFE9700E98C22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1BF111DB1A2CFE9800E98C22 /* KoolieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KoolieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BF111E01A2CFE9800E98C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BF111E11A2CFE9800E98C22 /* KoolieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoolieTests.swift; sourceTree = "<group>"; };
+		1BF111F51A2D032700E98C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		1BF111F71A2D032700E98C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		1BF111FB1A2D042600E98C22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1BF112111A2D050D00E98C22 /* Koolie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Koolie.xcdatamodel; sourceTree = "<group>"; };
+		1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BF111C01A2CFE9700E98C22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BF111D81A2CFE9800E98C22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BF111BA1A2CFE9700E98C22 = {
+			isa = PBXGroup;
+			children = (
+				1BF111C51A2CFE9700E98C22 /* Koolie */,
+				1BF111DE1A2CFE9800E98C22 /* KoolieTests */,
+				1BF111C41A2CFE9700E98C22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BF111C41A2CFE9700E98C22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111C31A2CFE9700E98C22 /* Koolie.app */,
+				1BF111DB1A2CFE9800E98C22 /* KoolieTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BF111C51A2CFE9700E98C22 /* Koolie */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111FA1A2D041000E98C22 /* main */,
+				1BF111EB1A2D030700E98C22 /* com */,
+				1BF111CD1A2CFE9700E98C22 /* ViewController.swift */,
+				1BF111D21A2CFE9700E98C22 /* Images.xcassets */,
+				1BF111C61A2CFE9700E98C22 /* Supporting Files */,
+			);
+			path = Koolie;
+			sourceTree = "<group>";
+		};
+		1BF111C61A2CFE9700E98C22 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111C71A2CFE9700E98C22 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BF111DE1A2CFE9800E98C22 /* KoolieTests */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111E11A2CFE9800E98C22 /* KoolieTests.swift */,
+				1BF111DF1A2CFE9800E98C22 /* Supporting Files */,
+			);
+			path = KoolieTests;
+			sourceTree = "<group>";
+		};
+		1BF111DF1A2CFE9800E98C22 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111E01A2CFE9800E98C22 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BF111EB1A2D030700E98C22 /* com */ = {
+			isa = PBXGroup;
+			children = (
+				1BF1120E1A2D050D00E98C22 /* constants */,
+				1BF1120F1A2D050D00E98C22 /* data */,
+				1BF112121A2D050D00E98C22 /* fonts */,
+				1BF112131A2D050D00E98C22 /* libs */,
+				1BF112141A2D050D00E98C22 /* models */,
+				1BF112151A2D050D00E98C22 /* modules */,
+				1BF112161A2D050D00E98C22 /* services */,
+				1BF112181A2D050D00E98C22 /* ui */,
+				1BF112191A2D050D00E98C22 /* utils */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		1BF111FA1A2D041000E98C22 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				1BF111FB1A2D042600E98C22 /* AppDelegate.swift */,
+				1BF111F41A2D032700E98C22 /* LaunchScreen.xib */,
+				1BF111F61A2D032700E98C22 /* Main.storyboard */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		1BF1120E1A2D050D00E98C22 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
+		1BF1120F1A2D050D00E98C22 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1BF112101A2D050D00E98C22 /* Koolie.xcdatamodeld */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		1BF112121A2D050D00E98C22 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		1BF112131A2D050D00E98C22 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		1BF112141A2D050D00E98C22 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		1BF112151A2D050D00E98C22 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		1BF112161A2D050D00E98C22 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		1BF112181A2D050D00E98C22 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		1BF112191A2D050D00E98C22 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BF111C21A2CFE9700E98C22 /* Koolie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BF111E51A2CFE9800E98C22 /* Build configuration list for PBXNativeTarget "Koolie" */;
+			buildPhases = (
+				1BF111BF1A2CFE9700E98C22 /* Sources */,
+				1BF111C01A2CFE9700E98C22 /* Frameworks */,
+				1BF111C11A2CFE9700E98C22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Koolie;
+			productName = Koolie;
+			productReference = 1BF111C31A2CFE9700E98C22 /* Koolie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BF111DA1A2CFE9800E98C22 /* KoolieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BF111E81A2CFE9800E98C22 /* Build configuration list for PBXNativeTarget "KoolieTests" */;
+			buildPhases = (
+				1BF111D71A2CFE9800E98C22 /* Sources */,
+				1BF111D81A2CFE9800E98C22 /* Frameworks */,
+				1BF111D91A2CFE9800E98C22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BF111DD1A2CFE9800E98C22 /* PBXTargetDependency */,
+			);
+			name = KoolieTests;
+			productName = KoolieTests;
+			productReference = 1BF111DB1A2CFE9800E98C22 /* KoolieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BF111BB1A2CFE9700E98C22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Paul Yuan";
+				TargetAttributes = {
+					1BF111C21A2CFE9700E98C22 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					1BF111DA1A2CFE9800E98C22 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 1BF111C21A2CFE9700E98C22;
+					};
+				};
+			};
+			buildConfigurationList = 1BF111BE1A2CFE9700E98C22 /* Build configuration list for PBXProject "Koolie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BF111BA1A2CFE9700E98C22;
+			productRefGroup = 1BF111C41A2CFE9700E98C22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BF111C21A2CFE9700E98C22 /* Koolie */,
+				1BF111DA1A2CFE9800E98C22 /* KoolieTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BF111C11A2CFE9700E98C22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */,
+				1BF111F91A2D032700E98C22 /* Main.storyboard in Resources */,
+				1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BF111D91A2CFE9800E98C22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BF111BF1A2CFE9700E98C22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BF111FC1A2D042600E98C22 /* AppDelegate.swift in Sources */,
+				1BF111CE1A2CFE9700E98C22 /* ViewController.swift in Sources */,
+				1BF1121A1A2D050D00E98C22 /* Koolie.xcdatamodeld in Sources */,
+				1BF1121B1A2D050D00E98C22 /* DatabaseHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BF111D71A2CFE9800E98C22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BF111E21A2CFE9800E98C22 /* KoolieTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BF111DD1A2CFE9800E98C22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BF111C21A2CFE9700E98C22 /* Koolie */;
+			targetProxy = 1BF111DC1A2CFE9800E98C22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BF111F41A2D032700E98C22 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BF111F51A2D032700E98C22 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		1BF111F61A2D032700E98C22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BF111F71A2D032700E98C22 /* Base */,
+			);
+			name = Main.storyboard;
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BF111E31A2CFE9800E98C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BF111E41A2CFE9800E98C22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BF111E61A2CFE9800E98C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Koolie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1BF111E71A2CFE9800E98C22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Koolie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1BF111E91A2CFE9800E98C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KoolieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Koolie.app/Koolie";
+			};
+			name = Debug;
+		};
+		1BF111EA1A2CFE9800E98C22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KoolieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Koolie.app/Koolie";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BF111BE1A2CFE9700E98C22 /* Build configuration list for PBXProject "Koolie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BF111E31A2CFE9800E98C22 /* Debug */,
+				1BF111E41A2CFE9800E98C22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BF111E51A2CFE9800E98C22 /* Build configuration list for PBXNativeTarget "Koolie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BF111E61A2CFE9800E98C22 /* Debug */,
+				1BF111E71A2CFE9800E98C22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BF111E81A2CFE9800E98C22 /* Build configuration list for PBXNativeTarget "KoolieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BF111E91A2CFE9800E98C22 /* Debug */,
+				1BF111EA1A2CFE9800E98C22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BF112101A2D050D00E98C22 /* Koolie.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BF112111A2D050D00E98C22 /* Koolie.xcdatamodel */,
+			);
+			currentVersion = 1BF112111A2D050D00E98C22 /* Koolie.xcdatamodel */;
+			path = Koolie.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1BF111BB1A2CFE9700E98C22 /* Project object */;
+}
