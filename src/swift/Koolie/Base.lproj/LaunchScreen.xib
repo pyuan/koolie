@@ -9,10 +9,34 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P5T-DD-6bQ">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="M3c-d5-vvZ">
+                    <rect key="frame" x="90" y="90" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="lAN-Je-3sa"/>
+                        <constraint firstAttribute="width" constant="300" id="xex-z8-fGj"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="P5T-DD-6bQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8MF-Ey-QHe"/>
+                <constraint firstAttribute="centerX" secondItem="M3c-d5-vvZ" secondAttribute="centerX" id="Mxo-fP-hVg"/>
+                <constraint firstItem="P5T-DD-6bQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dID-Tv-mGl"/>
+                <constraint firstAttribute="trailing" secondItem="P5T-DD-6bQ" secondAttribute="trailing" id="foJ-hy-vGr"/>
+                <constraint firstAttribute="bottom" secondItem="P5T-DD-6bQ" secondAttribute="bottom" id="iCg-be-Xjz"/>
+                <constraint firstAttribute="centerY" secondItem="M3c-d5-vvZ" secondAttribute="centerY" id="r2F-9k-rMR"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="background" width="1536" height="2008"/>
+        <image name="logo_full" width="500" height="500"/>
+    </resources>
 </document>
