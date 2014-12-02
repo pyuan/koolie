@@ -10,9 +10,9 @@ import Foundation
 
 class Constants {
     
-    enum UITableViewCellSeparatorValues:Float {
-        case LeftMargin = 15.0
-        case RightMargin = 0.0
+    enum PARSE:String {
+        case APPLICATION_ID = "m12v58wdZMJEU4Rr4mbGOTavLioKCdfbWvsHrMyX"
+        case CLIENT_KEY = "gO2EV3EeB4v6hYbXZ2HLfgbes1pt6KLLhtkiTvSc"
     }
     
 }
