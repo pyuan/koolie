@@ -34,6 +34,10 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         
         let savedPassword:String? = UserPreferencesService.getPreference(Constants.USER_PREFERNCES_KEYS.PASSWORD) as? String
         self.passwordField?.text = savedPassword
+        
+        //hide views so logged in user will bypass without seeing login
+        self.formContainer?.hidden = true
+        self.registerButton?.hidden = true
     }
     
     override func viewDidAppear(animated: Bool)
@@ -44,10 +48,17 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         notif.addObserver(self, selector: "onKeyboardHide:", name: UIKeyboardDidHideNotification, object: nil)
         
         //if already logged in, send user to home
+        let completionHandler:() -> Void = {() -> Void in
+            self.formContainer?.hidden = false
+            self.registerButton?.hidden = false
+        }
+        
         let user:PFUser? = LoginService.getCurrentUser()
         DebugService.print("Current user: \(user)")
         if user != nil {
-            self.goToHome()
+            self.goToHome(completionHandler)
+        } else {
+            completionHandler()
         }
     }
     
@@ -151,7 +162,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate
             LoginService.login(username, password: password, onResult: {(user:PFUser!, error:NSError!) -> Void in
                 if user != nil
                 {
-                    self.goToHome()
+                    self.goToHome(nil)
                     
                     //update user preferences with username and password
                     UserPreferencesService.setPreference(Constants.USER_PREFERNCES_KEYS.USERNAME, value: username)
@@ -169,10 +180,11 @@ class LoginViewController:UIViewController, UITextFieldDelegate
     }
     
     //take user to home if logged in
-    private func goToHome() {
+    private func goToHome(completionHandler: (() -> Void)?)
+    {
         let storyboard:UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let controller:UIViewController = storyboard.instantiateInitialViewController() as UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.presentViewController(controller, animated: true, completion: completionHandler)
         DebugService.print("User is logged in, go to home")
     }
     

@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //init parse
         Parse.setApplicationId(Constants.PARSE.APPLICATION_ID.rawValue, clientKey: Constants.PARSE.CLIENT_KEY.rawValue)
         
+        //preload keyboard as workaround for ios8 bug
+        //http://stackoverflow.com/questions/9357026/super-slow-lag-delay-on-initial-keyboard-animation-of-uitextfield
+        let textField:UITextField = UITextField()
+        self.window?.addSubview(textField)
+        textField.becomeFirstResponder()
+        textField.resignFirstResponder()
+        textField.removeFromSuperview()
+
         return true
     }
 

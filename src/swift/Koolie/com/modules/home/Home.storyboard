@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-u1-kv2" customClass="IconButton" customModule="Koolie" customModuleProvider="target">
-                                <rect key="frame" x="529" y="535" width="50" height="50"/>
+                                <rect key="frame" x="544" y="550" width="35" height="35"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="9fy-hd-gMg"/>
-                                    <constraint firstAttribute="height" constant="50" id="LNK-KI-XFH"/>
+                                    <constraint firstAttribute="width" constant="35" id="9fy-hd-gMg"/>
+                                    <constraint firstAttribute="height" constant="35" id="LNK-KI-XFH"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,15 +34,44 @@
                                     <action selector="logOut:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="PQe-dZ-Xxb"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-iM-yAr">
+                                <rect key="frame" x="200" y="165" width="200" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-zN-chP">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="69Z-C8-YGR" customClass="CircularImage" customModule="Koolie" customModuleProvider="target">
+                                        <rect key="frame" x="40.5" y="35" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="a0E-dL-F7u"/>
+                                            <constraint firstAttribute="height" constant="120" id="rjk-PV-BQR"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Nii-kX-s1B"/>
+                                    <constraint firstAttribute="bottom" secondItem="bmx-zN-chP" secondAttribute="bottom" id="O6Z-3P-xTn"/>
+                                    <constraint firstAttribute="centerY" secondItem="69Z-C8-YGR" secondAttribute="centerY" constant="5" id="Voq-cU-As6"/>
+                                    <constraint firstItem="bmx-zN-chP" firstAttribute="top" secondItem="iy1-iM-yAr" secondAttribute="top" id="ZPz-W8-PKu"/>
+                                    <constraint firstAttribute="trailing" secondItem="bmx-zN-chP" secondAttribute="trailing" id="ZaK-he-9vj"/>
+                                    <constraint firstAttribute="width" constant="200" id="elw-ko-SnF"/>
+                                    <constraint firstAttribute="centerX" secondItem="69Z-C8-YGR" secondAttribute="centerX" id="j2E-yP-LIx"/>
+                                    <constraint firstItem="bmx-zN-chP" firstAttribute="leading" secondItem="iy1-iM-yAr" secondAttribute="leading" id="obq-5Y-iJV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="iy1-iM-yAr" secondAttribute="centerY" constant="35" id="9N0-ff-hWN"/>
+                            <constraint firstAttribute="centerX" secondItem="iy1-iM-yAr" secondAttribute="centerX" id="qbU-pz-Q0y"/>
                             <constraint firstItem="DpF-Ky-a3v" firstAttribute="top" secondItem="0Aa-u1-kv2" secondAttribute="bottom" constant="15" id="v0J-ad-O0q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Aa-u1-kv2" secondAttribute="trailing" constant="5" id="ygd-C1-xAV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="profileButton" destination="0Aa-u1-kv2" id="B1j-rM-pbe"/>
+                        <outlet property="profileImage" destination="69Z-C8-YGR" id="064-q4-pjj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcd-wr-Mns" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,4 +79,7 @@
             <point key="canvasLocation" x="281" y="402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_full" width="500" height="500"/>
+    </resources>
 </document>

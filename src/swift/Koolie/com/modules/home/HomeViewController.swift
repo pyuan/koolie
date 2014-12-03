@@ -13,6 +13,19 @@ class HomeViewController:UIViewController
 {
     
     @IBOutlet var profileButton:UIButton?
+    @IBOutlet var profileImage:CircularImage?
+    
+    //load profile image with the logged in user
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        let user:PFUser! = LoginService.getCurrentUser()
+        let file:PFFile? = user["image"] as? PFFile
+        if file != nil {
+            self.profileImage?.imageURL = file!.url
+        }
+    }
     
     @IBAction func logOut(sender:AnyObject?) {
         LoginService.logout()
