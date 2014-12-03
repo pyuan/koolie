@@ -33,6 +33,7 @@
 		1BAF014A1A2E815C0050B83A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF01331A2E80F30050B83A /* CoreGraphics.framework */; };
 		1BAF014B1A2E815C0050B83A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF01311A2E80970050B83A /* StoreKit.framework */; };
 		1BAF014C1A2E815C0050B83A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF012F1A2E80900050B83A /* CoreLocation.framework */; };
+		1BAF014E1A2E85430050B83A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF014D1A2E85430050B83A /* LoginService.swift */; };
 		1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111D21A2CFE9700E98C22 /* Images.xcassets */; };
 		1BF111E21A2CFE9800E98C22 /* KoolieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF111E11A2CFE9800E98C22 /* KoolieTests.swift */; };
 		1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111F41A2D032700E98C22 /* LaunchScreen.xib */; };
@@ -79,6 +80,7 @@
 		1BAF013D1A2E812B0050B83A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1BAF013F1A2E81480050B83A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1BAF01411A2E81500050B83A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1BAF014D1A2E85430050B83A /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1BF111C31A2CFE9700E98C22 /* Koolie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koolie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF111C71A2CFE9700E98C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BF111D21A2CFE9700E98C22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */,
+				1BAF014D1A2E85430050B83A /* LoginService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BF111FC1A2D042600E98C22 /* AppDelegate.swift in Sources */,
+				1BAF014E1A2E85430050B83A /* LoginService.swift in Sources */,
 				1BAF01201A2E75DC0050B83A /* GradientButton.swift in Sources */,
 				1BF1121A1A2D050D00E98C22 /* Koolie.xcdatamodeld in Sources */,
 				1BAF01031A2E4DC10050B83A /* UIColor.swift in Sources */,

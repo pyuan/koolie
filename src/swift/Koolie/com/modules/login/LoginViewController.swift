@@ -120,7 +120,49 @@ class LoginViewController:UIViewController, UITextFieldDelegate
     // perform login after keyboard animates away
     private func doLogin()
     {
-        println("login")
+        let username:String = self.usernameField!.text
+        let password:String = self.passwordField!.text
+        let isValid:Bool = self.validate(username, password: password)
+        if !isValid
+        {
+            let msg:String = "Please fill in your user name and password"
+            let alert:UIAlertController = UIAlertController(title: "", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+            let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            LoginService.login(username, password: password, onResult: {(user:PFUser!, error:NSError!) -> Void in
+                if user != nil
+                {
+                    println(user["image"])
+                    
+                    let msg:String = "You are logged in as \(user.username)"
+                    let alert:UIAlertController = UIAlertController(title: "Success!", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    alert.addAction(ok)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else {
+                    let msg:String = "Either your user name or password is incorrect, please try again."
+                    let alert:UIAlertController = UIAlertController(title: "Sorry", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    alert.addAction(ok)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            })
+        }
+    }
+    
+    // validate to make sure a username and password have been filled out
+    private func validate(username:String, password:String) -> Bool
+    {
+        if username.isEmpty || password.isEmpty {
+            return false
+        }
+        
+        return true
     }
     
     //perform register after keyboard animates away
