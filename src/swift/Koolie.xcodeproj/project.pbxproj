@@ -34,6 +34,10 @@
 		1BAF014B1A2E815C0050B83A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF01311A2E80970050B83A /* StoreKit.framework */; };
 		1BAF014C1A2E815C0050B83A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF012F1A2E80900050B83A /* CoreLocation.framework */; };
 		1BAF014E1A2E85430050B83A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF014D1A2E85430050B83A /* LoginService.swift */; };
+		1BAF01501A2F6C0A0050B83A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAF014F1A2F6C0A0050B83A /* Home.storyboard */; };
+		1BAF01521A2F6C1A0050B83A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01511A2F6C1A0050B83A /* HomeViewController.swift */; };
+		1BAF01541A2F6D1C0050B83A /* DebugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01531A2F6D1C0050B83A /* DebugService.swift */; };
+		1BAF01561A2F726D0050B83A /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01551A2F726D0050B83A /* IconButton.swift */; };
 		1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111D21A2CFE9700E98C22 /* Images.xcassets */; };
 		1BF111E21A2CFE9800E98C22 /* KoolieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF111E11A2CFE9800E98C22 /* KoolieTests.swift */; };
 		1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF111F41A2D032700E98C22 /* LaunchScreen.xib */; };
@@ -81,6 +85,10 @@
 		1BAF013F1A2E81480050B83A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1BAF01411A2E81500050B83A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BAF014D1A2E85430050B83A /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		1BAF014F1A2F6C0A0050B83A /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		1BAF01511A2F6C1A0050B83A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1BAF01531A2F6D1C0050B83A /* DebugService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugService.swift; sourceTree = "<group>"; };
+		1BAF01551A2F726D0050B83A /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		1BF111C31A2CFE9700E98C22 /* Koolie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koolie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF111C71A2CFE9700E98C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BF111D21A2CFE9700E98C22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 		1BAF01051A2E4EFA0050B83A /* home */ = {
 			isa = PBXGroup;
 			children = (
+				1BAF014F1A2F6C0A0050B83A /* Home.storyboard */,
+				1BAF01511A2F6C1A0050B83A /* HomeViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -317,6 +327,7 @@
 			children = (
 				1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */,
 				1BAF014D1A2E85430050B83A /* LoginService.swift */,
+				1BAF01531A2F6D1C0050B83A /* DebugService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -325,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				1BAF011F1A2E75DC0050B83A /* GradientButton.swift */,
+				1BAF01551A2F726D0050B83A /* IconButton.swift */,
 				1BAF010E1A2E51520050B83A /* UIButton.swift */,
 				1BAF00F91A2E47550050B83A /* ViewWithDefaultBackground.swift */,
 			);
@@ -422,6 +434,7 @@
 				1BAF010B1A2E4F070050B83A /* Login.storyboard in Resources */,
 				1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */,
 				1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */,
+				1BAF01501A2F6C0A0050B83A /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,15 +452,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAF01561A2F726D0050B83A /* IconButton.swift in Sources */,
 				1BF111FC1A2D042600E98C22 /* AppDelegate.swift in Sources */,
 				1BAF014E1A2E85430050B83A /* LoginService.swift in Sources */,
 				1BAF01201A2E75DC0050B83A /* GradientButton.swift in Sources */,
 				1BF1121A1A2D050D00E98C22 /* Koolie.xcdatamodeld in Sources */,
 				1BAF01031A2E4DC10050B83A /* UIColor.swift in Sources */,
+				1BAF01521A2F6C1A0050B83A /* HomeViewController.swift in Sources */,
 				1BAF011E1A2E61D90050B83A /* TimeUtils.swift in Sources */,
 				1BAF00FA1A2E47550050B83A /* ViewWithDefaultBackground.swift in Sources */,
 				1BAF010D1A2E4FA20050B83A /* LoginViewController.swift in Sources */,
 				1BF1121B1A2D050D00E98C22 /* DatabaseHandler.swift in Sources */,
+				1BAF01541A2F6D1C0050B83A /* DebugService.swift in Sources */,
 				1BAF01041A2E4DC10050B83A /* UIFont.swift in Sources */,
 				1BAF00FC1A2E4A120050B83A /* Constants.swift in Sources */,
 				1BAF010F1A2E51520050B83A /* UIButton.swift in Sources */,

@@ -29,11 +29,19 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         self.passwordField?.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool)
+    {
         super.viewDidAppear(animated)
         let notif:NSNotificationCenter = NSNotificationCenter.defaultCenter()
         notif.addObserver(self, selector: "onKeyboardShow:", name: UIKeyboardDidShowNotification, object: nil)
         notif.addObserver(self, selector: "onKeyboardHide:", name: UIKeyboardDidHideNotification, object: nil)
+        
+        //if already logged in, send user to home
+        let user:PFUser? = LoginService.getCurrentUser()
+        DebugService.print("Current user: \(user)")
+        if user != nil {
+            self.goToHome()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -134,15 +142,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         else
         {
             LoginService.login(username, password: password, onResult: {(user:PFUser!, error:NSError!) -> Void in
-                if user != nil
-                {
-                    println(user["image"])
-                    
-                    let msg:String = "You are logged in as \(user.username)"
-                    let alert:UIAlertController = UIAlertController(title: "Success!", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-                    let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-                    alert.addAction(ok)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                if user != nil {
+                    self.goToHome()
                 }
                 else {
                     let msg:String = "Either your user name or password is incorrect, please try again."
@@ -153,6 +154,14 @@ class LoginViewController:UIViewController, UITextFieldDelegate
                 }
             })
         }
+    }
+    
+    //take user to home if logged in
+    private func goToHome() {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let controller:UIViewController = storyboard.instantiateInitialViewController() as UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
+        DebugService.print("User is logged in, go to home")
     }
     
     // validate to make sure a username and password have been filled out
@@ -186,6 +195,11 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         }
         
         return nil
+    }
+    
+    //unwind function
+    func unwindToLogin(segue:UIStoryboardSegue) {
+        
     }
     
 }

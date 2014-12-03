@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K1y-Ib-NH7">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="WHz-bA-3Be">
+            <objects>
+                <viewController id="K1y-Ib-NH7" customClass="HomeViewController" customModule="Koolie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nPJ-Wr-bbn"/>
+                        <viewControllerLayoutGuide type="bottom" id="DpF-Ky-a3v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5cJ-Ia-gWl" customClass="ViewWithDefaultBackground" customModule="Koolie" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-u1-kv2" customClass="IconButton" customModule="Koolie" customModuleProvider="target">
+                                <rect key="frame" x="529" y="535" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9fy-hd-gMg"/>
+                                    <constraint firstAttribute="height" constant="50" id="LNK-KI-XFH"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="icon_profile"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logOut:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="PQe-dZ-Xxb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DpF-Ky-a3v" firstAttribute="top" secondItem="0Aa-u1-kv2" secondAttribute="bottom" constant="15" id="v0J-ad-O0q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Aa-u1-kv2" secondAttribute="trailing" constant="5" id="ygd-C1-xAV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profileButton" destination="0Aa-u1-kv2" id="B1j-rM-pbe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vcd-wr-Mns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="402"/>
+        </scene>
+    </scenes>
+</document>

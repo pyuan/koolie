@@ -24,7 +24,7 @@ class LoginService
     // retrieve the currently logged in user
     class func getCurrentUser() -> PFUser?
     {
-        let currentUser:PFUser = PFUser.currentUser()
+        let currentUser:PFUser? = PFUser.currentUser()
         return currentUser
     }
     
