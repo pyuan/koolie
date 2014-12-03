@@ -15,4 +15,9 @@ class Constants {
         case CLIENT_KEY = "gO2EV3EeB4v6hYbXZ2HLfgbes1pt6KLLhtkiTvSc"
     }
     
+    enum USER_PREFERNCES_KEYS:Int {
+        case USERNAME
+        case PASSWORD
+    }
+    
 }

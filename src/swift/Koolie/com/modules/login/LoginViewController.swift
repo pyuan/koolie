@@ -27,6 +27,13 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         self.formContainer?.backgroundColor = UIColor.clearColor()
         self.usernameField?.delegate = self
         self.passwordField?.delegate = self
+        
+        //pre-populate with user preferences if available
+        let savedUserName:String? = UserPreferencesService.getPreference(Constants.USER_PREFERNCES_KEYS.USERNAME) as? String
+        self.usernameField?.text = savedUserName
+        
+        let savedPassword:String? = UserPreferencesService.getPreference(Constants.USER_PREFERNCES_KEYS.PASSWORD) as? String
+        self.passwordField?.text = savedPassword
     }
     
     override func viewDidAppear(animated: Bool)
@@ -142,8 +149,13 @@ class LoginViewController:UIViewController, UITextFieldDelegate
         else
         {
             LoginService.login(username, password: password, onResult: {(user:PFUser!, error:NSError!) -> Void in
-                if user != nil {
+                if user != nil
+                {
                     self.goToHome()
+                    
+                    //update user preferences with username and password
+                    UserPreferencesService.setPreference(Constants.USER_PREFERNCES_KEYS.USERNAME, value: username)
+                    UserPreferencesService.setPreference(Constants.USER_PREFERNCES_KEYS.PASSWORD, value: password)
                 }
                 else {
                     let msg:String = "Either your user name or password is incorrect, please try again."

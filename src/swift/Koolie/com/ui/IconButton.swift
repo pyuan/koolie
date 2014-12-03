@@ -17,6 +17,8 @@ import UIKit
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.backgroundColor = UIColor.clearColor()
+        
         let icon:UIImage = UIImage(named: iconName)!
         self.setImage(icon, forState: UIControlState.Normal)
         self.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
