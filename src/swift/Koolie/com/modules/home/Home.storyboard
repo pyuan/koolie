@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K1y-Ib-NH7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="niD-0S-XZh">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +31,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="icon_profile"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="logOut:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="PQe-dZ-Xxb"/>
+                                    <action selector="onProfileButton:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="4xa-zC-lIs"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-iM-yAr">
@@ -69,12 +69,31 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0Aa-u1-kv2" secondAttribute="trailing" constant="5" id="ygd-C1-xAV"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="C4Q-o0-doh"/>
                     <connections>
                         <outlet property="profileButton" destination="0Aa-u1-kv2" id="B1j-rM-pbe"/>
                         <outlet property="profileImage" destination="69Z-C8-YGR" id="064-q4-pjj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcd-wr-Mns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1093" y="402"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tw5-CI-Usk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="niD-0S-XZh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S91-DU-Nlr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K1y-Ib-NH7" kind="relationship" relationship="rootViewController" id="VYW-os-OzX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxr-of-JiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="281" y="402"/>
         </scene>
