@@ -16,6 +16,7 @@ class FormViewController:UIViewController, UITextFieldDelegate
     
     private var originalPoint:CGPoint?
     private var spinner:SpinnerOverlay?
+    private var keyboardHeight:CGFloat = -1
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,6 +35,7 @@ class FormViewController:UIViewController, UITextFieldDelegate
     {
         if self.originalPoint == nil
         {
+            self.originalPoint = self.view.frame.origin
             let info:[NSObject:AnyObject]  = notification.userInfo!
             let value:AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
             let rawFrame:CGRect = value.CGRectValue()
@@ -51,23 +53,31 @@ class FormViewController:UIViewController, UITextFieldDelegate
     
     func slideUp(keyboardHeight:CGFloat)
     {
-        self.originalPoint = self.view.frame.origin
-        let slideUpAmount:CGFloat = keyboardHeight - (self.view.frame.height - (self.formContainer!.frame.origin.y + self.formContainer!.frame.height))
-        UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {() -> Void in
-            
-            self.view.frame.origin = CGPointMake(self.originalPoint!.x, -slideUpAmount)
-            
-            }, completion: {(finished:Bool) -> Void in })
+        if self.originalPoint != nil
+        {
+            self.keyboardHeight = keyboardHeight
+            let field:UIView = self.getFirstResponder() as UIView
+            let point:CGPoint = self.view.convertPoint(field.frame.origin, fromView: self.formContainer!)
+            let slideUpAmount:CGFloat = point.y - (self.view.frame.height - self.keyboardHeight - field.frame.height) / 2
+            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {() -> Void in
+                
+                self.view.frame.origin = CGPointMake(self.originalPoint!.x, -slideUpAmount)
+                
+                }, completion: {(finished:Bool) -> Void in })
+        }
     }
     
     func slideBack()
     {
-        UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {() -> Void in
-            
-            self.view.frame.origin = self.originalPoint!
-            self.originalPoint = nil
-            
-            }, completion: {(finished:Bool) -> Void in })
+        if self.originalPoint != nil
+        {
+            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {() -> Void in
+                
+                self.view.frame.origin = self.originalPoint!
+                self.originalPoint = nil
+                
+                }, completion: {(finished:Bool) -> Void in })
+        }
     }
     
     //go to the next field when return/next is tapped
@@ -80,14 +90,20 @@ class FormViewController:UIViewController, UITextFieldDelegate
         }
         else {
             self.performAction({() -> Void in
-                self.submitForm()
+                self.onFormReturn()
             })
         }
         return true
     }
     
-    // to be overridden when the form is submitted
-    func submitForm() {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if self.keyboardHeight > 0 {
+            self.slideUp(self.keyboardHeight)
+        }
+    }
+    
+    // to be overridden when the return key is tapped for the last field of the form
+    func onFormReturn() {
         
     }
     

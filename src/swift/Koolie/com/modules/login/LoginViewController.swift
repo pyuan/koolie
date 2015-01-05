@@ -62,7 +62,7 @@ class LoginViewController:FormViewController
     @IBAction func onSignInButton(sender:AnyObject?)
     {
         self.performAction({() -> Void in
-            self.submitForm()
+            self.login()
         })
     }
     
@@ -72,10 +72,6 @@ class LoginViewController:FormViewController
             let controller:UIViewController = storyboard.instantiateInitialViewController() as UIViewController
             self.navigationController?.pushViewController(controller, animated: true)
         })
-    }
-    
-    override func submitForm() {
-        self.login()
     }
     
     // perform login

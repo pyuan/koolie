@@ -31,7 +31,7 @@ class RegisterViewController:FormViewController
     
     @IBAction func onSignUpButton(sender:AnyObject?) {
         self.performAction({() -> Void in
-            self.submitForm()
+            self.register()
         })
     }
     
@@ -41,19 +41,24 @@ class RegisterViewController:FormViewController
         })
     }
     
-    override func submitForm() {
-        self.register()
-    }
-    
     // register user
     private func register() {
-        
+        let username:String = self.usernameField!.text
+        let email:String = self.emailField!.text
+        let password:String = self.passwordField!.text
+        let confirmpassword:String = self.confirmPasswordField!.text
+        let isValid:Bool = self.validate(username, email: email, password: password, confirmPassword: confirmpassword)
+        println(isValid)
     }
     
     // validate to make sure a username and password have been filled out
-    private func validate(username:String, password:String) -> Bool
+    private func validate(username:String, email:String, password:String, confirmPassword:String) -> Bool
     {
-        if username.isEmpty || password.isEmpty {
+        if username.isEmpty || email.isEmpty || password.isEmpty {
+            return false
+        }
+        
+        if password != confirmPassword {
             return false
         }
         
