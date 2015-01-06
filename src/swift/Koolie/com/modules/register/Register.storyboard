@@ -64,8 +64,8 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="mej-5W-lo8">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-25-VVp" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="15" width="60" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-25-VVp" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="17" width="60" height="60"/>
                                                 <color key="backgroundColor" red="0.08235294118" green="0.4823529412" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="UEk-ag-rpA"/>
@@ -74,13 +74,16 @@
                                                 <state key="normal">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onProfileImage:" destination="X0E-HO-lGc" eventType="touchUpInside" id="wiU-0I-UPQ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="top" secondItem="KeN-pd-C2i" secondAttribute="top" id="4y3-FH-Fgn"/>
                                             <constraint firstAttribute="bottom" secondItem="mej-5W-lo8" secondAttribute="bottom" id="8No-6o-XtK"/>
                                             <constraint firstAttribute="centerX" secondItem="zqP-25-VVp" secondAttribute="centerX" id="KbA-AY-B3E"/>
-                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="5" id="TPp-Wa-tBg"/>
+                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="3" id="TPp-Wa-tBg"/>
                                             <constraint firstAttribute="trailing" secondItem="mej-5W-lo8" secondAttribute="trailing" id="YQi-89-AWw"/>
                                             <constraint firstAttribute="height" constant="100" id="goE-iX-Oyu"/>
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="leading" secondItem="KeN-pd-C2i" secondAttribute="leading" id="uwm-Wn-pAm"/>
@@ -144,6 +147,7 @@
                         <outlet property="emailField" destination="Mt4-jr-bY8" id="Flk-Vy-WdB"/>
                         <outlet property="formContainer" destination="Eq0-5R-bBM" id="9CH-JO-EBL"/>
                         <outlet property="passwordField" destination="hm5-7U-vWB" id="x8Q-Jm-wii"/>
+                        <outlet property="profileImage" destination="zqP-25-VVp" id="TBP-p3-nKz"/>
                         <outlet property="signUpButton" destination="3hl-fY-OQq" id="RVI-o8-L7z"/>
                         <outlet property="usernameField" destination="6Ws-Ry-M54" id="ToN-Gr-5dX"/>
                     </connections>

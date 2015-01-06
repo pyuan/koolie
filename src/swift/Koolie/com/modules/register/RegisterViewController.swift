@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
-class RegisterViewController:FormViewController
+class RegisterViewController:FormViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     
     enum ValidationResult:Int {
@@ -25,6 +26,7 @@ class RegisterViewController:FormViewController
     @IBOutlet var confirmPasswordField:UITextField?
     @IBOutlet var emailField:UITextField?
     @IBOutlet var signUpButton:UIButton?
+    @IBOutlet var profileImage:ProfileImageButton?
     
     override func viewDidLoad()
     {
@@ -46,6 +48,52 @@ class RegisterViewController:FormViewController
     @IBAction func onBackButton(sender:AnyObject?) {
         self.performAction({() -> Void in
             self.back()
+        })
+    }
+    
+    @IBAction func onProfileImage(sender:AnyObject?) {
+        self.performAction({() -> Void in
+            let alert:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let takePhoto:UIAlertAction = UIAlertAction(title: "Take a Photo", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                self.showImagePicker(UIImagePickerControllerSourceType.Camera)
+            })
+            let choosePhoto:UIAlertAction = UIAlertAction(title: "Choose a Photo", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                self.showImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
+            })
+            let deletePhoto:UIAlertAction = UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler: {(action:UIAlertAction!) -> Void in
+                self.profileImage!.imageURL = ""
+            })
+            let cancel:UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(takePhoto)
+            alert.addAction(choosePhoto)
+            alert.addAction(deletePhoto)
+            alert.addAction(cancel)
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
+    }
+    
+    // open the imagepickercontroller with the specified type
+    private func showImagePicker(type:UIImagePickerControllerSourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(type) {
+            let picker:UIImagePickerController = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = true
+            picker.sourceType = type
+            picker.mediaTypes = [kUTTypeImage]
+            self.presentViewController(picker, animated: true, completion: nil)
+        } else {
+            let alert:UIAlertController = UIAlertController(title: nil, message: "Photo source not available.", preferredStyle: UIAlertControllerStyle.Alert)
+            let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: UIImagePickerController delegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: {() -> Void in
+            let chosenImage:UIImage? = info[UIImagePickerControllerEditedImage] as? UIImage
+            self.profileImage?.setImage(chosenImage, forState: UIControlState.Normal)
         })
     }
     
@@ -85,7 +133,25 @@ class RegisterViewController:FormViewController
         }
         else
         {
-            DebugService.print("No error, register user")
+            DebugService.print("No validation error, updating user...")
+            self.showSpinner()
+            
+            let imageData:NSData? = self.profileImage!.isDefaultImage() ? nil : UIImagePNGRepresentation(self.profileImage?.imageView?.image)
+            LoginService.signUpUser(username, password: password, email: email, imageData: imageData, onSignUp: {() -> Void in
+                
+                self.hideSpinner();
+                self.back()
+                
+                }, onError: {(error:NSError!) -> Void in
+                    
+                    self.hideSpinner();
+                    let msg:String = error.userInfo!["error"] as String
+                    let alert:UIAlertController = UIAlertController(title: "Sorry", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    alert.addAction(ok)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+            })
         }
     }
     

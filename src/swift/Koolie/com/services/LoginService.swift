@@ -57,4 +57,27 @@ class LoginService
         })
     }
     
+    // sign up a user
+    class func signUpUser(username:String, password:String, email:String, imageData:NSData?, onSignUp:(()->Void)?, onError:((error:NSError!)->Void)?)
+    {
+        let user:PFUser = PFUser()
+        user.username = username
+        user.password = password
+        user.email = email
+        
+        if imageData != nil {
+            let imageFile:PFFile = PFFile(name:"profile.png", data:imageData)
+            user["image"] = imageFile
+        }
+        
+        user.signUpInBackgroundWithBlock({(success:Bool!, error:NSError!) -> Void in
+            if success == true {
+                onSignUp?()
+            } else {
+                onError?(error: error)
+                DebugService.print(error)
+            }
+        })
+    }
+    
 }

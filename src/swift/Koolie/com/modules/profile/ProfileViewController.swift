@@ -121,7 +121,7 @@ class ProfileViewController:FormViewController, UIImagePickerControllerDelegate,
         let user:PFUser = LoginService.getCurrentUser()!
         self.usernameField?.text = user.username
         self.emailField?.text = user.email
-        self.passwordField?.text = user.password
+        self.passwordField?.text = ""
         self.confirmPasswordField?.text = ""
         
         if loadProfileImage {
@@ -173,11 +173,13 @@ class ProfileViewController:FormViewController, UIImagePickerControllerDelegate,
             let imageData:NSData? = self.profileImage!.isDefaultImage() ? nil : UIImagePNGRepresentation(self.profileImage?.imageView?.image)
             LoginService.updateUser(username, password: password, imageData: imageData, updateProfileImage: self.updateProfileImage, onUpdate: {() -> Void in
                 
+                self.hideSpinner()
                 self.back()
                 
                 }, onError: {(error:NSError!) -> Void in
                     
-                    let msg:String = "An error occurred while updating your user, please try again"
+                    self.hideSpinner()
+                    let msg:String = error.userInfo!["error"] as String
                     let alert:UIAlertController = UIAlertController(title: "Sorry", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
                     let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                     alert.addAction(ok)

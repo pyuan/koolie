@@ -359,8 +359,8 @@
 			isa = PBXGroup;
 			children = (
 				1BF112171A2D050D00E98C22 /* DatabaseHandler.swift */,
-				1BAF014D1A2E85430050B83A /* LoginService.swift */,
 				1BAF01531A2F6D1C0050B83A /* DebugService.swift */,
+				1BAF014D1A2E85430050B83A /* LoginService.swift */,
 				1BAF018D1A2F84400050B83A /* UserPreferencesService.swift */,
 			);
 			path = services;
