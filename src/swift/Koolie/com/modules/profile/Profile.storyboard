@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Register View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="f40-am-CHH">
             <objects>
-                <viewController id="X0E-HO-lGc" customClass="RegisterViewController" customModule="Koolie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="X0E-HO-lGc" customClass="ProfileViewController" customModule="Koolie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9td-Ki-dc1"/>
                         <viewControllerLayoutGuide type="bottom" id="glA-gv-akb"/>
@@ -28,7 +28,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hm5-7U-vWB" customClass="LoginTextField" customModule="Koolie" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hm5-7U-vWB" customClass="LoginTextField" customModule="Koolie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="233" width="518" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="wI4-xq-ipg"/>
@@ -38,11 +38,11 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hl-fY-OQq" customClass="GradientButton" customModule="Koolie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="351" width="518" height="44"/>
-                                        <state key="normal" title="Sign Up">
+                                        <state key="normal" title="Update">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onSignUpButton:" destination="X0E-HO-lGc" eventType="touchUpInside" id="7HA-bp-vyX"/>
+                                            <action selector="onUpdateButton:" destination="X0E-HO-lGc" eventType="touchUpInside" id="XiK-El-0G9"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mt4-jr-bY8" customClass="LoginTextField" customModule="Koolie" customModuleProvider="target">
@@ -53,7 +53,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-PM-20r" customClass="LoginTextField" customModule="Koolie" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-PM-20r" customClass="LoginTextField" customModule="Koolie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="292" width="518" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -64,8 +64,8 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="mej-5W-lo8">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-25-VVp" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="15" width="60" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-25-VVp" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="17" width="60" height="60"/>
                                                 <color key="backgroundColor" red="0.08235294118" green="0.4823529412" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="UEk-ag-rpA"/>
@@ -80,7 +80,7 @@
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="top" secondItem="KeN-pd-C2i" secondAttribute="top" id="4y3-FH-Fgn"/>
                                             <constraint firstAttribute="bottom" secondItem="mej-5W-lo8" secondAttribute="bottom" id="8No-6o-XtK"/>
                                             <constraint firstAttribute="centerX" secondItem="zqP-25-VVp" secondAttribute="centerX" id="KbA-AY-B3E"/>
-                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="5" id="TPp-Wa-tBg"/>
+                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="3" id="TPp-Wa-tBg"/>
                                             <constraint firstAttribute="trailing" secondItem="mej-5W-lo8" secondAttribute="trailing" id="YQi-89-AWw"/>
                                             <constraint firstAttribute="height" constant="100" id="goE-iX-Oyu"/>
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="leading" secondItem="KeN-pd-C2i" secondAttribute="leading" id="uwm-Wn-pAm"/>
@@ -129,13 +129,24 @@
                                     <action selector="onBackButton:" destination="X0E-HO-lGc" eventType="touchUpInside" id="fRw-Tq-fsz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xG-H4-Akv">
+                                <rect key="frame" x="277" y="555" width="45" height="30"/>
+                                <state key="normal" title="Revert">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRevertButton:" destination="X0E-HO-lGc" eventType="touchUpInside" id="YGW-HO-57c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Eq0-5R-bBM" secondAttribute="centerY" id="3Uk-J1-rln"/>
+                            <constraint firstAttribute="centerX" secondItem="0xG-H4-Akv" secondAttribute="centerX" id="Hbx-pm-5aq"/>
                             <constraint firstItem="dkp-ti-X9P" firstAttribute="leading" secondItem="l7w-Fy-voC" secondAttribute="leading" constant="15" id="eky-09-B90"/>
                             <constraint firstItem="Eq0-5R-bBM" firstAttribute="leading" secondItem="l7w-Fy-voC" secondAttribute="leadingMargin" constant="25" id="i80-GG-aZE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eq0-5R-bBM" secondAttribute="trailing" constant="25" id="ptz-JF-cyB"/>
+                            <constraint firstItem="glA-gv-akb" firstAttribute="top" secondItem="0xG-H4-Akv" secondAttribute="bottom" constant="15" id="qIT-dU-Heh"/>
                             <constraint firstItem="dkp-ti-X9P" firstAttribute="top" secondItem="l7w-Fy-voC" secondAttribute="top" constant="15" id="wAW-OE-xc6"/>
                         </constraints>
                     </view>
@@ -144,7 +155,9 @@
                         <outlet property="emailField" destination="Mt4-jr-bY8" id="Flk-Vy-WdB"/>
                         <outlet property="formContainer" destination="Eq0-5R-bBM" id="9CH-JO-EBL"/>
                         <outlet property="passwordField" destination="hm5-7U-vWB" id="x8Q-Jm-wii"/>
-                        <outlet property="signUpButton" destination="3hl-fY-OQq" id="RVI-o8-L7z"/>
+                        <outlet property="profileImage" destination="zqP-25-VVp" id="Ep6-Id-Szw"/>
+                        <outlet property="revertButton" destination="0xG-H4-Akv" id="Dyp-VM-j7m"/>
+                        <outlet property="updateButton" destination="3hl-fY-OQq" id="Ijn-UJ-dAq"/>
                         <outlet property="usernameField" destination="6Ws-Ry-M54" id="ToN-Gr-5dX"/>
                     </connections>
                 </viewController>

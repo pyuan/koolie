@@ -13,7 +13,7 @@ class HomeViewController:UIViewController
 {
     
     @IBOutlet var profileButton:UIButton?
-    @IBOutlet var profileImage:CircularImage?
+    @IBOutlet var profileImage:ProfileImageButton?
     
     // load profile image with the logged in user
     override func viewDidLoad()
@@ -35,19 +35,20 @@ class HomeViewController:UIViewController
         }
     }
     
+    @IBAction func onCheckInButton(sender:AnyObject?) {
+        LoginService.logout()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func onProfileButton(sender:AnyObject?) {
         self.showProfile()
     }
     
     // show profile screen
     private func showProfile() {
-        /*
-        let storyboard:UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-        let controller:LoginViewController = storyboard.instantiateInitialViewController() as LoginViewController
+        let storyboard:UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let controller:ProfileViewController = storyboard.instantiateInitialViewController() as ProfileViewController
         self.navigationController?.pushViewController(controller, animated: true)
-        */
-        LoginService.logout()
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

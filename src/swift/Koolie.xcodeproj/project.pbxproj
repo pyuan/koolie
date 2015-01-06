@@ -41,6 +41,9 @@
 		1BAF01561A2F726D0050B83A /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01551A2F726D0050B83A /* IconButton.swift */; };
 		1BAF018E1A2F84400050B83A /* UserPreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF018D1A2F84400050B83A /* UserPreferencesService.swift */; };
 		1BAF01901A2F87630050B83A /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF018F1A2F87630050B83A /* CircularImage.swift */; };
+		1BD063F61A5B48A000B0DAE2 /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD063F51A5B48A000B0DAE2 /* ProfileImageButton.swift */; };
+		1BD063F91A5B54AC00B0DAE2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD063F81A5B54AC00B0DAE2 /* Profile.storyboard */; };
+		1BD063FB1A5B54BD00B0DAE2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD063FA1A5B54BD00B0DAE2 /* ProfileViewController.swift */; };
 		1BD86E0A1A5B03D90000B7CA /* RoundIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD86E091A5B03D90000B7CA /* RoundIconButton.swift */; };
 		1BD86E0C1A5B07630000B7CA /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD86E0B1A5B07630000B7CA /* Register.storyboard */; };
 		1BD86E0E1A5B0AE50000B7CA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD86E0D1A5B0AE50000B7CA /* FormViewController.swift */; };
@@ -99,6 +102,9 @@
 		1BAF01551A2F726D0050B83A /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		1BAF018D1A2F84400050B83A /* UserPreferencesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferencesService.swift; sourceTree = "<group>"; };
 		1BAF018F1A2F87630050B83A /* CircularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
+		1BD063F51A5B48A000B0DAE2 /* ProfileImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
+		1BD063F81A5B54AC00B0DAE2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		1BD063FA1A5B54BD00B0DAE2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1BD86E091A5B03D90000B7CA /* RoundIconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundIconButton.swift; sourceTree = "<group>"; };
 		1BD86E0B1A5B07630000B7CA /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		1BD86E0D1A5B0AE50000B7CA /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 		1BD86E071A5B02B70000B7CA /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				1BD063F81A5B54AC00B0DAE2 /* Profile.storyboard */,
+				1BD063FA1A5B54BD00B0DAE2 /* ProfileViewController.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 				1BAF018F1A2F87630050B83A /* CircularImage.swift */,
 				1BAF011F1A2E75DC0050B83A /* GradientButton.swift */,
 				1BAF01551A2F726D0050B83A /* IconButton.swift */,
+				1BD063F51A5B48A000B0DAE2 /* ProfileImageButton.swift */,
 				1BD86E091A5B03D90000B7CA /* RoundIconButton.swift */,
 				1B213BFD1A5AF5EF00B51383 /* SpinnerOverlay.swift */,
 				1BAF010E1A2E51520050B83A /* UIButton.swift */,
@@ -460,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD063F91A5B54AC00B0DAE2 /* Profile.storyboard in Resources */,
 				1BAF010B1A2E4F070050B83A /* Login.storyboard in Resources */,
 				1BF111F81A2D032700E98C22 /* LaunchScreen.xib in Resources */,
 				1BF111D31A2CFE9700E98C22 /* Images.xcassets in Resources */,
@@ -488,6 +498,7 @@
 				1BAF014E1A2E85430050B83A /* LoginService.swift in Sources */,
 				1BAF01201A2E75DC0050B83A /* GradientButton.swift in Sources */,
 				1BF1121A1A2D050D00E98C22 /* Koolie.xcdatamodeld in Sources */,
+				1BD063FB1A5B54BD00B0DAE2 /* ProfileViewController.swift in Sources */,
 				1BD86E0A1A5B03D90000B7CA /* RoundIconButton.swift in Sources */,
 				1BAF01031A2E4DC10050B83A /* UIColor.swift in Sources */,
 				1BAF01521A2F6C1A0050B83A /* HomeViewController.swift in Sources */,
@@ -499,6 +510,7 @@
 				1BAF00FA1A2E47550050B83A /* ViewWithDefaultBackground.swift in Sources */,
 				1BAF010D1A2E4FA20050B83A /* LoginViewController.swift in Sources */,
 				1BF1121B1A2D050D00E98C22 /* DatabaseHandler.swift in Sources */,
+				1BD063F61A5B48A000B0DAE2 /* ProfileImageButton.swift in Sources */,
 				1BAF01541A2F6D1C0050B83A /* DebugService.swift in Sources */,
 				1BAF01041A2E4DC10050B83A /* UIFont.swift in Sources */,
 				1BAF00FC1A2E4A120050B83A /* Constants.swift in Sources */,

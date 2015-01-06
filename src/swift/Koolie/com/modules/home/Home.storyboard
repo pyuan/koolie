@@ -40,24 +40,30 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-zN-chP">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="69Z-C8-YGR" customClass="CircularImage" customModule="Koolie" customModuleProvider="target">
-                                        <rect key="frame" x="40.5" y="35" width="120" height="120"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dt-yd-3Xu" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="33" width="120" height="120"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="a0E-dL-F7u"/>
-                                            <constraint firstAttribute="height" constant="120" id="rjk-PV-BQR"/>
+                                            <constraint firstAttribute="height" constant="120" id="9nN-bU-ZxT"/>
+                                            <constraint firstAttribute="width" constant="120" id="LWe-iH-w5r"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onCheckInButton:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="5dB-sC-Pjj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Nii-kX-s1B"/>
                                     <constraint firstAttribute="bottom" secondItem="bmx-zN-chP" secondAttribute="bottom" id="O6Z-3P-xTn"/>
-                                    <constraint firstAttribute="centerY" secondItem="69Z-C8-YGR" secondAttribute="centerY" constant="5" id="Voq-cU-As6"/>
                                     <constraint firstItem="bmx-zN-chP" firstAttribute="top" secondItem="iy1-iM-yAr" secondAttribute="top" id="ZPz-W8-PKu"/>
                                     <constraint firstAttribute="trailing" secondItem="bmx-zN-chP" secondAttribute="trailing" id="ZaK-he-9vj"/>
                                     <constraint firstAttribute="width" constant="200" id="elw-ko-SnF"/>
-                                    <constraint firstAttribute="centerX" secondItem="69Z-C8-YGR" secondAttribute="centerX" id="j2E-yP-LIx"/>
+                                    <constraint firstAttribute="centerX" secondItem="1dt-yd-3Xu" secondAttribute="centerX" id="iIH-pq-cMy"/>
                                     <constraint firstItem="bmx-zN-chP" firstAttribute="leading" secondItem="iy1-iM-yAr" secondAttribute="leading" id="obq-5Y-iJV"/>
+                                    <constraint firstAttribute="centerY" secondItem="1dt-yd-3Xu" secondAttribute="centerY" constant="7" id="thX-5O-FzT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -72,7 +78,7 @@
                     <navigationItem key="navigationItem" id="C4Q-o0-doh"/>
                     <connections>
                         <outlet property="profileButton" destination="0Aa-u1-kv2" id="B1j-rM-pbe"/>
-                        <outlet property="profileImage" destination="69Z-C8-YGR" id="064-q4-pjj"/>
+                        <outlet property="profileImage" destination="1dt-yd-3Xu" id="upd-11-nS0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcd-wr-Mns" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  ProfileViewController.swift
 //  Koolie
 //
 //  Created by Paul Yuan on 2015-01-05.
@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-class RegisterViewController:FormViewController
+class ProfileViewController:FormViewController
 {
     
     enum ValidationResult:Int {
         case NoUserNameError
         case NoEmailError
-        case NoPasswordError
         case PasswordsMisMatchError
         case NoError
     }
@@ -24,10 +23,13 @@ class RegisterViewController:FormViewController
     @IBOutlet var passwordField:UITextField?
     @IBOutlet var confirmPasswordField:UITextField?
     @IBOutlet var emailField:UITextField?
-    @IBOutlet var signUpButton:UIButton?
+    @IBOutlet var updateButton:UIButton?
+    @IBOutlet var revertButton:UIButton?
+    @IBOutlet var profileImage:ProfileImageButton?
     
-    override func viewDidLoad()
-    {
+    private var updateProfileImage:Bool = false
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.formContainer?.backgroundColor = UIColor.clearColor()
@@ -37,9 +39,20 @@ class RegisterViewController:FormViewController
         self.emailField?.delegate = self
     }
     
-    @IBAction func onSignUpButton(sender:AnyObject?) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.revert(false)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateProfileImage = false
+        self.revert(true)
+    }
+    
+    @IBAction func onUpdateButton(sender:AnyObject?) {
         self.performAction({() -> Void in
-            self.register()
+            self.update()
         })
     }
     
@@ -49,8 +62,30 @@ class RegisterViewController:FormViewController
         })
     }
     
+    @IBAction func onRevertButton(sender:AnyObject?) {
+        self.performAction({() -> Void in
+            self.revert(true)
+        })
+    }
+    
+    // revert fields to saved user data, only load profile image when the view did appear for slow network connection
+    private func revert(loadProfileImage:Bool) {
+        let user:PFUser = LoginService.getCurrentUser()!
+        self.usernameField?.text = user.username
+        self.emailField?.text = user.email
+        self.passwordField?.text = user.password
+        self.confirmPasswordField?.text = ""
+        
+        if loadProfileImage {
+            let file:PFFile? = user["image"] as? PFFile
+            if file != nil && self.profileImage!.imageURL != file!.url {
+                self.profileImage?.imageURL = file!.url
+            }
+        }
+    }
+    
     // register user
-    private func register()
+    private func update()
     {
         let username:String = self.usernameField!.text
         let email:String = self.emailField!.text
@@ -68,11 +103,8 @@ class RegisterViewController:FormViewController
             case ValidationResult.NoEmailError:
                 msg = "Please fill in your email."
                 break
-            case ValidationResult.NoPasswordError:
-                msg = "Please fill in your password."
-                break
             case ValidationResult.PasswordsMisMatchError:
-                msg = "Please make sure your confirmed password matches your password."
+                msg = "Please make sure your confirmed new password matches your new password."
                 break
             default:
                 break
@@ -85,7 +117,23 @@ class RegisterViewController:FormViewController
         }
         else
         {
-            DebugService.print("No error, register user")
+            DebugService.print("No validation error, updating user...")
+            self.showSpinner()
+            
+            let imageData:NSData? = UIImagePNGRepresentation(self.profileImage?.imageView?.image)
+            LoginService.updateUser(username, password: password, imageData: imageData, updateProfileImage: self.updateProfileImage, onUpdate: {() -> Void in
+                
+                self.back()
+                
+                }, onError: {(error:NSError!) -> Void in
+                    
+                    let msg:String = "An error occurred while updating your user, please try again"
+                    let alert:UIAlertController = UIAlertController(title: "Sorry", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    alert.addAction(ok)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+            })
         }
     }
     
@@ -98,10 +146,6 @@ class RegisterViewController:FormViewController
         
         if email.isEmpty {
             return ValidationResult.NoEmailError
-        }
-        
-        if password.isEmpty {
-            return ValidationResult.NoPasswordError
         }
         
         if password != confirmPassword {

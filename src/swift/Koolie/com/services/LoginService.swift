@@ -28,4 +28,29 @@ class LoginService
         return currentUser
     }
     
+    // update the user, only update profile image if the flag is set to true
+    class func updateUser(username:String, password:String, imageData:NSData?, updateProfileImage:Bool, onUpdate:(()->Void)?, onError:((error:NSError!)->Void)?)
+    {
+        let user:PFUser! = LoginService.getCurrentUser()
+        user.username = username
+        
+        if !password.isEmpty {
+            user.password = password
+        }
+        
+        if updateProfileImage {
+            let imageFile:PFFile = PFFile(name:"profile.png", data:imageData)
+            user["image"] = imageFile
+        }
+        
+        user.saveInBackgroundWithBlock({(success:Bool!, error:NSError!) -> Void in
+            if success == true {
+                onUpdate?()
+            } else {
+                onError?(error: error)
+                DebugService.print(error)
+            }
+        })
+    }
+    
 }
