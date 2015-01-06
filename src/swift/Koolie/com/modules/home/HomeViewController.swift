@@ -13,6 +13,7 @@ class HomeViewController:UIViewController
 {
     
     @IBOutlet var profileButton:UIButton?
+    @IBOutlet var logoutButton:UIButton?
     @IBOutlet var profileImage:ProfileImageButton?
     
     // load profile image with the logged in user
@@ -38,12 +39,39 @@ class HomeViewController:UIViewController
     }
     
     @IBAction func onCheckInButton(sender:AnyObject?) {
-        LoginService.logout()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.showMapView()
+    }
+    
+    // show map screen
+    private func showMapView() {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
+        let controller:UIViewController = storyboard.instantiateInitialViewController() as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func onProfileButton(sender:AnyObject?) {
         self.showProfile()
+    }
+    
+    @IBAction func onLogoutButton(sender:AnyObject?) {
+        self.confirmLogOut()
+    }
+    
+    // show confirm alert for logging out
+    private func confirmLogOut()
+    {
+        let alert:UIAlertController = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: UIAlertControllerStyle.Alert)
+        let yes:UIAlertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+            
+            LoginService.logout()
+            self.dismissViewControllerAnimated(true, completion: nil)
+            DebugService.print("Log out user, back to login screen")
+            
+        })
+        let no:UIAlertAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(no)
+        alert.addAction(yes)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // show profile screen

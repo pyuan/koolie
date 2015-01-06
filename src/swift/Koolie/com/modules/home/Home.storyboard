@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-u1-kv2" customClass="IconButton" customModule="Koolie" customModuleProvider="target">
-                                <rect key="frame" x="544" y="550" width="35" height="35"/>
+                                <rect key="frame" x="549" y="550" width="35" height="35"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="9fy-hd-gMg"/>
@@ -66,17 +66,37 @@
                                     <constraint firstAttribute="centerY" secondItem="1dt-yd-3Xu" secondAttribute="centerY" constant="7" id="thX-5O-FzT"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paO-ye-ZvH" customClass="IconButton" customModule="Koolie" customModuleProvider="target">
+                                <rect key="frame" x="509" y="550" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="5l0-Xx-Ofi"/>
+                                    <constraint firstAttribute="height" constant="35" id="idN-RF-q1a"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="icon_logout"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onLogoutButton:" destination="K1y-Ib-NH7" eventType="touchUpInside" id="u3P-W4-62E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0Aa-u1-kv2" firstAttribute="leading" secondItem="paO-ye-ZvH" secondAttribute="trailing" constant="5" id="2Aa-mP-tuF"/>
                             <constraint firstAttribute="centerY" secondItem="iy1-iM-yAr" secondAttribute="centerY" constant="35" id="9N0-ff-hWN"/>
+                            <constraint firstItem="paO-ye-ZvH" firstAttribute="centerY" secondItem="0Aa-u1-kv2" secondAttribute="centerY" id="U2M-fV-S6w"/>
                             <constraint firstAttribute="centerX" secondItem="iy1-iM-yAr" secondAttribute="centerX" id="qbU-pz-Q0y"/>
                             <constraint firstItem="DpF-Ky-a3v" firstAttribute="top" secondItem="0Aa-u1-kv2" secondAttribute="bottom" constant="15" id="v0J-ad-O0q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0Aa-u1-kv2" secondAttribute="trailing" constant="5" id="ygd-C1-xAV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Aa-u1-kv2" secondAttribute="trailing" id="ygd-C1-xAV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C4Q-o0-doh"/>
                     <connections>
+                        <outlet property="logoutButton" destination="paO-ye-ZvH" id="KOC-HY-7y8"/>
                         <outlet property="profileButton" destination="0Aa-u1-kv2" id="B1j-rM-pbe"/>
                         <outlet property="profileImage" destination="1dt-yd-3Xu" id="upd-11-nS0"/>
                     </connections>
