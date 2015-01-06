@@ -13,6 +13,7 @@ class SpinnerOverlay:UIView
 {
     
     private var spinner:UIActivityIndicatorView?
+    private var background:UIView?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,6 +27,12 @@ class SpinnerOverlay:UIView
         super.init()
         self.backgroundColor = UIColor.clearColor()
         self.userInteractionEnabled = true
+        
+        self.background = UIView()
+        self.background?.backgroundColor = UIColor.COLORS.CYAN_4
+        self.background?.alpha = 0.6
+        self.addSubview(self.background!)
+        
         self.spinner = UIActivityIndicatorView()
         self.spinner?.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         self.spinner?.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
@@ -35,7 +42,8 @@ class SpinnerOverlay:UIView
     
     func addToParentView(parentView:UIView) {
         parentView.addSubview(self)
-        self.frame = parentView.frame
+        self.frame.size = parentView.frame.size
+        self.background?.frame.size = self.frame.size
         self.spinner?.center = self.center
         self.spinner?.startAnimating()
     }

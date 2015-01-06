@@ -21,11 +21,15 @@ class ProfileImageButton:UIButton
                 if imageData != nil {
                     self.setImage(UIImage(data: imageData!), forState: UIControlState.Normal)
                 }
+                self.hasDefaultImage = false
             } else {
                 self.setImage(UIImage(named: "default_profile"), forState: UIControlState.Normal)
+                self.hasDefaultImage = true
             }
         }
     }
+    
+    private var hasDefaultImage:Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +44,15 @@ class ProfileImageButton:UIButton
         self.layer.cornerRadius = self.frame.width/2
         self.layer.masksToBounds = true
         self.layer.borderWidth = 0
+    }
+    
+    func isDefaultImage() -> Bool {
+        return self.hasDefaultImage
+    }
+    
+    override func setImage(image: UIImage?, forState state: UIControlState) {
+        super.setImage(image, forState: state)
+        self.hasDefaultImage = image == nil
     }
     
 }

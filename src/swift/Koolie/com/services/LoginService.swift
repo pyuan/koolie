@@ -39,8 +39,12 @@ class LoginService
         }
         
         if updateProfileImage {
-            let imageFile:PFFile = PFFile(name:"profile.png", data:imageData)
-            user["image"] = imageFile
+            if imageData != nil {
+                let imageFile:PFFile = PFFile(name:"profile.png", data:imageData)
+                user["image"] = imageFile
+            } else {
+                user.removeObjectForKey("image")
+            }
         }
         
         user.saveInBackgroundWithBlock({(success:Bool!, error:NSError!) -> Void in

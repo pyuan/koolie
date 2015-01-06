@@ -65,7 +65,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-25-VVp" customClass="ProfileImageButton" customModule="Koolie" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="17" width="60" height="60"/>
+                                                <rect key="frame" x="20" y="16" width="60" height="60"/>
                                                 <color key="backgroundColor" red="0.08235294118" green="0.4823529412" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="UEk-ag-rpA"/>
@@ -74,13 +74,16 @@
                                                 <state key="normal">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onProfileImage:" destination="X0E-HO-lGc" eventType="touchUpInside" id="Uc2-SZ-MsA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="top" secondItem="KeN-pd-C2i" secondAttribute="top" id="4y3-FH-Fgn"/>
                                             <constraint firstAttribute="bottom" secondItem="mej-5W-lo8" secondAttribute="bottom" id="8No-6o-XtK"/>
                                             <constraint firstAttribute="centerX" secondItem="zqP-25-VVp" secondAttribute="centerX" id="KbA-AY-B3E"/>
-                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="3" id="TPp-Wa-tBg"/>
+                                            <constraint firstAttribute="centerY" secondItem="zqP-25-VVp" secondAttribute="centerY" constant="4" id="TPp-Wa-tBg"/>
                                             <constraint firstAttribute="trailing" secondItem="mej-5W-lo8" secondAttribute="trailing" id="YQi-89-AWw"/>
                                             <constraint firstAttribute="height" constant="100" id="goE-iX-Oyu"/>
                                             <constraint firstItem="mej-5W-lo8" firstAttribute="leading" secondItem="KeN-pd-C2i" secondAttribute="leading" id="uwm-Wn-pAm"/>
@@ -113,7 +116,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkp-ti-X9P" customClass="RoundIconButton" customModule="Koolie" customModuleProvider="target">
-                                <rect key="frame" x="15" y="15" width="25" height="25"/>
+                                <rect key="frame" x="15" y="25" width="25" height="25"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.4823529412" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Q8n-Ic-1fG"/>
@@ -147,7 +150,7 @@
                             <constraint firstItem="Eq0-5R-bBM" firstAttribute="leading" secondItem="l7w-Fy-voC" secondAttribute="leadingMargin" constant="25" id="i80-GG-aZE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eq0-5R-bBM" secondAttribute="trailing" constant="25" id="ptz-JF-cyB"/>
                             <constraint firstItem="glA-gv-akb" firstAttribute="top" secondItem="0xG-H4-Akv" secondAttribute="bottom" constant="15" id="qIT-dU-Heh"/>
-                            <constraint firstItem="dkp-ti-X9P" firstAttribute="top" secondItem="l7w-Fy-voC" secondAttribute="top" constant="15" id="wAW-OE-xc6"/>
+                            <constraint firstItem="dkp-ti-X9P" firstAttribute="top" secondItem="l7w-Fy-voC" secondAttribute="top" constant="25" id="wAW-OE-xc6"/>
                         </constraints>
                     </view>
                     <connections>

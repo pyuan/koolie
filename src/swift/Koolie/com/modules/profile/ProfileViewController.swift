@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
-class ProfileViewController:FormViewController
+class ProfileViewController:FormViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     
     enum ValidationResult:Int {
@@ -46,7 +47,6 @@ class ProfileViewController:FormViewController
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.updateProfileImage = false
         self.revert(true)
     }
     
@@ -68,6 +68,54 @@ class ProfileViewController:FormViewController
         })
     }
     
+    @IBAction func onProfileImage(sender:AnyObject?) {
+        self.performAction({() -> Void in
+            let alert:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let takePhoto:UIAlertAction = UIAlertAction(title: "Take a Photo", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                self.showImagePicker(UIImagePickerControllerSourceType.Camera)
+            })
+            let choosePhoto:UIAlertAction = UIAlertAction(title: "Choose a Photo", style: UIAlertActionStyle.Default, handler: {(action:UIAlertAction!) -> Void in
+                self.showImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
+            })
+            let deletePhoto:UIAlertAction = UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler: {(action:UIAlertAction!) -> Void in
+                self.profileImage?.imageURL = ""
+                self.updateProfileImage = true
+            })
+            let cancel:UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(takePhoto)
+            alert.addAction(choosePhoto)
+            alert.addAction(deletePhoto)
+            alert.addAction(cancel)
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
+    }
+    
+    // open the imagepickercontroller with the specified type
+    private func showImagePicker(type:UIImagePickerControllerSourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(type) {
+            let picker:UIImagePickerController = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = true
+            picker.sourceType = type
+            picker.mediaTypes = [kUTTypeImage]
+            self.presentViewController(picker, animated: true, completion: nil)
+        } else {
+            let alert:UIAlertController = UIAlertController(title: nil, message: "Photo source not available.", preferredStyle: UIAlertControllerStyle.Alert)
+            let ok:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: UIImagePickerController delegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: {() -> Void in
+            let chosenImage:UIImage? = info[UIImagePickerControllerEditedImage] as? UIImage
+            self.profileImage?.setImage(chosenImage, forState: UIControlState.Normal)
+            self.updateProfileImage = true
+        })
+    }
+    
     // revert fields to saved user data, only load profile image when the view did appear for slow network connection
     private func revert(loadProfileImage:Bool) {
         let user:PFUser = LoginService.getCurrentUser()!
@@ -78,8 +126,10 @@ class ProfileViewController:FormViewController
         
         if loadProfileImage {
             let file:PFFile? = user["image"] as? PFFile
-            if file != nil && self.profileImage!.imageURL != file!.url {
+            if file != nil {
                 self.profileImage?.imageURL = file!.url
+            } else {
+                self.profileImage?.imageURL = ""
             }
         }
     }
@@ -120,7 +170,7 @@ class ProfileViewController:FormViewController
             DebugService.print("No validation error, updating user...")
             self.showSpinner()
             
-            let imageData:NSData? = UIImagePNGRepresentation(self.profileImage?.imageView?.image)
+            let imageData:NSData? = self.profileImage!.isDefaultImage() ? nil : UIImagePNGRepresentation(self.profileImage?.imageView?.image)
             LoginService.updateUser(username, password: password, imageData: imageData, updateProfileImage: self.updateProfileImage, onUpdate: {() -> Void in
                 
                 self.back()

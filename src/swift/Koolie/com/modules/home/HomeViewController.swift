@@ -32,6 +32,8 @@ class HomeViewController:UIViewController
         let file:PFFile? = user["image"] as? PFFile
         if file != nil && self.profileImage!.imageURL != file!.url {
             self.profileImage?.imageURL = file!.url
+        } else if file == nil {
+            self.profileImage?.imageURL = ""
         }
     }
     
