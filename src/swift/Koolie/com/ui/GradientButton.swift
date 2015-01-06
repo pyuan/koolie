@@ -24,7 +24,7 @@ import QuartzCore
     {
         super.awakeFromNib()
         
-        var textColor:UIColor = type == TYPES.GREEN.rawValue ? UIColor.COLORS.CYAN_4 : UIColor.COLORS.CYAN_1
+        var textColor:UIColor = type == TYPES.GREEN.rawValue ? UIColor.COLORS.CYAN_4 : UIColor.COLORS.BLUE_1
         self.tintColor = textColor
         
         //setup gradient background
@@ -37,7 +37,7 @@ import QuartzCore
         if self.type == TYPES.GREEN.rawValue {
             colors = [UIColor.COLORS.GREEN_2.CGColor, UIColor.COLORS.GREEN_1.CGColor]
         } else {
-            colors = [UIColor.COLORS.CYAN_4.CGColor, UIColor.COLORS.CYAN_3.CGColor]
+            colors = [UIColor.COLORS.CYAN_1.CGColor, UIColor.COLORS.CYAN_2.CGColor]
         }
         
         gradient.colors = colors

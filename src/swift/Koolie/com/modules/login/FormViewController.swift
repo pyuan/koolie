@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FormViewController:UIViewController, UITextFieldDelegate
+class FormViewController:UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     
     @IBOutlet var formContainer:UIView?

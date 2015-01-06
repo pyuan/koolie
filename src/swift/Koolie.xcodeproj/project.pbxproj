@@ -13,6 +13,7 @@
 		1B7D20FB1A5C468000466912 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7D20FA1A5C468000466912 /* List.storyboard */; };
 		1B7D20FD1A5C471500466912 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D20FC1A5C471500466912 /* ListViewController.swift */; };
 		1B7D21001A5C497700466912 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7D20FE1A5C496D00466912 /* MapKit.framework */; };
+		1B7D21021A5C6C0400466912 /* CheckInTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D21011A5C6C0400466912 /* CheckInTextView.swift */; };
 		1BAF00FA1A2E47550050B83A /* ViewWithDefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF00F91A2E47550050B83A /* ViewWithDefaultBackground.swift */; };
 		1BAF00FC1A2E4A120050B83A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF00FB1A2E4A120050B83A /* Constants.swift */; };
 		1BAF01031A2E4DC10050B83A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01011A2E4DC10050B83A /* UIColor.swift */; };
@@ -78,6 +79,7 @@
 		1B7D20FA1A5C468000466912 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		1B7D20FC1A5C471500466912 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		1B7D20FE1A5C496D00466912 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1B7D21011A5C6C0400466912 /* CheckInTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInTextView.swift; sourceTree = "<group>"; };
 		1BAF00F91A2E47550050B83A /* ViewWithDefaultBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithDefaultBackground.swift; sourceTree = "<group>"; };
 		1BAF00FB1A2E4A120050B83A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1BAF01011A2E4DC10050B83A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				1B7D20F61A5C434600466912 /* Map.storyboard */,
 				1B7D20F81A5C43FC00466912 /* MapViewController.swift */,
+				1B7D21011A5C6C0400466912 /* CheckInTextView.swift */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				1BF1121B1A2D050D00E98C22 /* DatabaseHandler.swift in Sources */,
 				1BD063F61A5B48A000B0DAE2 /* ProfileImageButton.swift in Sources */,
 				1BAF01541A2F6D1C0050B83A /* DebugService.swift in Sources */,
+				1B7D21021A5C6C0400466912 /* CheckInTextView.swift in Sources */,
 				1BAF01041A2E4DC10050B83A /* UIFont.swift in Sources */,
 				1BAF00FC1A2E4A120050B83A /* Constants.swift in Sources */,
 				1BAF010F1A2E51520050B83A /* UIButton.swift in Sources */,
