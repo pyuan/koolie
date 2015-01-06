@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-0c-Gl8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAX-4E-z6s" customClass="RoundIconButton" customModule="Koolie" customModuleProvider="target">
                                 <rect key="frame" x="15" y="15" width="25" height="25"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.4823529412" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,13 +58,18 @@
                         <constraints>
                             <constraint firstItem="sAX-4E-z6s" firstAttribute="leading" secondItem="b9h-Rp-ExE" secondAttribute="leading" constant="15" id="8f0-LK-k9l"/>
                             <constraint firstItem="6zK-M4-FUZ" firstAttribute="centerY" secondItem="sAX-4E-z6s" secondAttribute="centerY" id="HA9-UQ-y6f"/>
+                            <constraint firstItem="ceE-0c-Gl8" firstAttribute="leading" secondItem="b9h-Rp-ExE" secondAttribute="leading" id="INA-t0-sbq"/>
                             <constraint firstItem="sAX-4E-z6s" firstAttribute="top" secondItem="b9h-Rp-ExE" secondAttribute="top" constant="15" id="NW1-T9-EMz"/>
                             <constraint firstItem="6zK-M4-FUZ" firstAttribute="leading" secondItem="sAX-4E-z6s" secondAttribute="trailing" constant="10" id="bmF-iO-9Jl"/>
+                            <constraint firstItem="ceE-0c-Gl8" firstAttribute="top" secondItem="b9h-Rp-ExE" secondAttribute="top" id="djG-qg-XOc"/>
+                            <constraint firstAttribute="trailing" secondItem="ceE-0c-Gl8" secondAttribute="trailing" id="wWm-m0-ilo"/>
+                            <constraint firstItem="MQx-UJ-kyP" firstAttribute="top" secondItem="ceE-0c-Gl8" secondAttribute="bottom" id="yIx-dq-34L"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="sAX-4E-z6s" id="1Ie-gU-HdU"/>
                         <outlet property="listButton" destination="6zK-M4-FUZ" id="egi-ca-z5m"/>
+                        <outlet property="map" destination="ceE-0c-Gl8" id="PJ0-r3-4U0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sox-NR-fWC" userLabel="First Responder" sceneMemberID="firstResponder"/>

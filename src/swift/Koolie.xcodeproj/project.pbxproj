@@ -12,6 +12,7 @@
 		1B7D20F91A5C43FC00466912 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D20F81A5C43FC00466912 /* MapViewController.swift */; };
 		1B7D20FB1A5C468000466912 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7D20FA1A5C468000466912 /* List.storyboard */; };
 		1B7D20FD1A5C471500466912 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D20FC1A5C471500466912 /* ListViewController.swift */; };
+		1B7D21001A5C497700466912 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7D20FE1A5C496D00466912 /* MapKit.framework */; };
 		1BAF00FA1A2E47550050B83A /* ViewWithDefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF00F91A2E47550050B83A /* ViewWithDefaultBackground.swift */; };
 		1BAF00FC1A2E4A120050B83A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF00FB1A2E4A120050B83A /* Constants.swift */; };
 		1BAF01031A2E4DC10050B83A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF01011A2E4DC10050B83A /* UIColor.swift */; };
@@ -76,6 +77,7 @@
 		1B7D20F81A5C43FC00466912 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1B7D20FA1A5C468000466912 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		1B7D20FC1A5C471500466912 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		1B7D20FE1A5C496D00466912 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1BAF00F91A2E47550050B83A /* ViewWithDefaultBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithDefaultBackground.swift; sourceTree = "<group>"; };
 		1BAF00FB1A2E4A120050B83A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1BAF01011A2E4DC10050B83A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAF01431A2E815C0050B83A /* Foundation.framework in Frameworks */,
+				1B7D21001A5C497700466912 /* MapKit.framework in Frameworks */,
 				1BAF01441A2E815C0050B83A /* UIKit.framework in Frameworks */,
 				1BAF01451A2E815C0050B83A /* CFNetwork.framework in Frameworks */,
 				1BAF01461A2E815C0050B83A /* SystemConfiguration.framework in Frameworks */,
@@ -327,6 +330,7 @@
 		1BF112131A2D050D00E98C22 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				1B7D20FE1A5C496D00466912 /* MapKit.framework */,
 				1BAF01371A2E810D0050B83A /* AudioToolbox.framework */,
 				1BAF01141A2E5A220050B83A /* Bolts.framework */,
 				1BAF013D1A2E812B0050B83A /* CFNetwork.framework */,
