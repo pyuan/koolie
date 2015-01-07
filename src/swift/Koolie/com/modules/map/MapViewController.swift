@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import AddressBookUI
 import MapKit
 
-class MapViewController:FormViewController
+class MapViewController:FormViewController, CLLocationManagerDelegate
 {
     
     enum Mode:Int {
@@ -28,6 +30,9 @@ class MapViewController:FormViewController
     @IBOutlet weak var checkInUpdateButtonsContainer:UIView?
     
     private var checkInBackgroundLayer:CAShapeLayer?
+    private var locationManager:CLLocationManager?
+    private var checkInMarker:MKPointAnnotation?
+    private var currentLocation:CLLocation?
     
     private var mode:Mode? {
         didSet {
@@ -43,19 +48,12 @@ class MapViewController:FormViewController
         self.checkInContainer?.alpha = 0.0
         self.checkInAddress?.font = UIFont.systemFontOfSize(12)
         self.checkInAddress?.textColor = UIColor.whiteColor()
+        self.checkInAddress?.text = "Getting your current location..."
         self.checkInMessage?.delegate = self
         
-        // add test annotation
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.50007773, longitude: -0.1246402)
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.05, 0.05)
-        let region:MKCoordinateRegion = MKCoordinateRegion(center: location, span: span)
-        self.map?.setRegion(region, animated: true)
-        
-        let annotation:MKPointAnnotation = MKPointAnnotation()
-        annotation.setCoordinate(location)
-        annotation.title = "Big Ben"
-        annotation.subtitle = "London"
-        self.map?.addAnnotation(annotation)
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         
         // set default mode
         self.mode = Mode.CheckIn
@@ -65,6 +63,11 @@ class MapViewController:FormViewController
         super.viewDidAppear(animated)
         self.drawCheckInBackground()
         self.updateMarker()
+        
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.requestWhenInUseAuthorization()
+        self.locationManager?.startUpdatingLocation()
+        //self.manager?.startMonitoringSignificantLocationChanges()
     }
     
     // draw background for checkin container
@@ -130,6 +133,62 @@ class MapViewController:FormViewController
         }
         
         return true
+    }
+    
+    // MARK: get the user's location
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
+    {
+        let location:CLLocation = locations.last as CLLocation
+        self.currentLocation = location
+        self.locationManager?.stopUpdatingLocation()
+        let lat:CLLocationDegrees = location.coordinate.latitude
+        let lng:CLLocationDegrees = location.coordinate.longitude
+        self.centerMap(latitude: lat, longitude: lng) //zoom in on map
+        DebugService.print("Current location: \(location)")
+    }
+    
+    // center the map to a location
+    private func centerMap(latitude lat:CLLocationDegrees!, longitude lng:CLLocationDegrees!)
+    {
+        // set map view region
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        let viewRegion:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue)
+        self.map?.setRegion(viewRegion, animated: false)
+        
+        // offset center of map
+        var center:CLLocationCoordinate2D = location
+        center.latitude += self.map!.region.span.latitudeDelta * 0.35
+        self.map?.setCenterCoordinate(center, animated: false)
+        
+        // update the centered address
+        self.getAddressFromLocation(latitude: lat, longitude: lng, onAddress: {(address:String!) -> Void in
+            self.checkInAddress!.text = address
+        })
+        
+        // add checkin annotation
+        self.map?.removeAnnotation(self.checkInMarker)
+        self.checkInMarker = MKPointAnnotation()
+        self.checkInMarker?.setCoordinate(location)
+        self.checkInMarker?.title = "Big Ben"
+        self.checkInMarker?.subtitle = "London"
+        self.map?.addAnnotation(self.checkInMarker)
+    }
+    
+    // update address by reverse geocoding a latitude and longitude
+    private func getAddressFromLocation(latitude lat:CLLocationDegrees!, longitude lng:CLLocationDegrees!, onAddress:((address:String!)->Void)?)
+    {
+        let location:CLLocation = CLLocation(latitude: lat, longitude: lng)
+        let geoCoder:CLGeocoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(location, completionHandler: {(placemarks:[AnyObject]!, error:NSError!) -> Void in
+            
+            if placemarks != nil && placemarks.count > 0 {
+                let placemark:CLPlacemark = placemarks.first as CLPlacemark
+                let arr:NSArray = placemark.addressDictionary["FormattedAddressLines"] as NSArray
+                let address:String = arr.componentsJoinedByString(", ")
+                onAddress?(address: address)
+            }
+            
+        })
     }
     
 }

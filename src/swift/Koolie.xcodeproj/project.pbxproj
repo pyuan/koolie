@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B213BFE1A5AF5EF00B51383 /* SpinnerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B213BFD1A5AF5EF00B51383 /* SpinnerOverlay.swift */; };
+		1B5D96661A5DB36100A3351D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5D96641A5DB35000A3351D /* AddressBookUI.framework */; };
 		1B7D20F71A5C434600466912 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7D20F61A5C434600466912 /* Map.storyboard */; };
 		1B7D20F91A5C43FC00466912 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7D20F81A5C43FC00466912 /* MapViewController.swift */; };
 		1B7D20FB1A5C468000466912 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7D20FA1A5C468000466912 /* List.storyboard */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		1B213BFD1A5AF5EF00B51383 /* SpinnerOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerOverlay.swift; sourceTree = "<group>"; };
+		1B5D96641A5DB35000A3351D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		1B7D20F61A5C434600466912 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		1B7D20F81A5C43FC00466912 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1B7D20FA1A5C468000466912 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5D96661A5DB36100A3351D /* AddressBookUI.framework in Frameworks */,
 				1BAF01431A2E815C0050B83A /* Foundation.framework in Frameworks */,
 				1B7D21001A5C497700466912 /* MapKit.framework in Frameworks */,
 				1BAF01441A2E815C0050B83A /* UIKit.framework in Frameworks */,
@@ -333,7 +336,7 @@
 		1BF112131A2D050D00E98C22 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				1B7D20FE1A5C496D00466912 /* MapKit.framework */,
+				1B5D96641A5DB35000A3351D /* AddressBookUI.framework */,
 				1BAF01371A2E810D0050B83A /* AudioToolbox.framework */,
 				1BAF01141A2E5A220050B83A /* Bolts.framework */,
 				1BAF013D1A2E812B0050B83A /* CFNetwork.framework */,
@@ -341,6 +344,7 @@
 				1BAF012F1A2E80900050B83A /* CoreLocation.framework */,
 				1BAF01411A2E81500050B83A /* Foundation.framework */,
 				1BAF012C1A2E806F0050B83A /* libz.1.1.3.dylib */,
+				1B7D20FE1A5C496D00466912 /* MapKit.framework */,
 				1BAF01391A2E811A0050B83A /* MobileCoreServices.framework */,
 				1BAF01151A2E5A220050B83A /* Parse.framework */,
 				1BAF01161A2E5A220050B83A /* ParseFacebookUtils.framework */,

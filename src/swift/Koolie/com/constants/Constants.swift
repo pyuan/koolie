@@ -20,4 +20,9 @@ class Constants {
         case PASSWORD
     }
     
+    enum DISTANCES:CLLocationDistance {
+        case MetersPerMile = 1609.344
+        case RadiusInMile = 0.1
+    }
+    
 }
