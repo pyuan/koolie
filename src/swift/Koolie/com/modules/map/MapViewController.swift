@@ -11,9 +11,12 @@ import UIKit
 import CoreLocation
 import AddressBookUI
 import MapKit
+import QuartzCore
 
-class MapViewController:FormViewController, CLLocationManagerDelegate
+class MapViewController:FormViewController, CLLocationManagerDelegate, MKMapViewDelegate
 {
+    
+    let MapOffsetLongitude:CLLocationDegrees = 0.37 // to align with check-in container view at the bottom
     
     enum Mode:Int {
         case CheckIn
@@ -32,7 +35,7 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
     private var checkInBackgroundLayer:CAShapeLayer?
     private var locationManager:CLLocationManager?
     private var checkInMarker:MKPointAnnotation?
-    private var currentLocation:CLLocation?
+    private var currentLocation:CLLocationCoordinate2D?
     
     private var mode:Mode? {
         didSet {
@@ -54,6 +57,12 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.requestWhenInUseAuthorization()
+        self.locationManager?.startUpdatingLocation()
+        //self.manager?.startMonitoringSignificantLocationChanges()
+        
+        self.map?.delegate = self
         
         // set default mode
         self.mode = Mode.CheckIn
@@ -62,12 +71,7 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.drawCheckInBackground()
-        self.updateMarker()
-        
-        self.locationManager?.requestAlwaysAuthorization()
-        self.locationManager?.requestWhenInUseAuthorization()
-        self.locationManager?.startUpdatingLocation()
-        //self.manager?.startMonitoringSignificantLocationChanges()
+        self.updateCheckinContainer()
     }
     
     // draw background for checkin container
@@ -121,7 +125,7 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    private func updateMarker() {
+    private func updateCheckinContainer() {
         self.checkInMessage?.setContentOffset(CGPointZero, animated: false)
     }
     
@@ -138,46 +142,45 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
     // MARK: get the user's location
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
     {
-        let location:CLLocation = locations.last as CLLocation
-        self.currentLocation = location
         self.locationManager?.stopUpdatingLocation()
-        let lat:CLLocationDegrees = location.coordinate.latitude
-        let lng:CLLocationDegrees = location.coordinate.longitude
-        self.centerMap(latitude: lat, longitude: lng) //zoom in on map
+        let location:CLLocation = locations.last as CLLocation
+        self.centerMap(coordinates: location.coordinate)
         DebugService.print("Current location: \(location)")
     }
     
-    // center the map to a location
-    private func centerMap(latitude lat:CLLocationDegrees!, longitude lng:CLLocationDegrees!)
+    // center and zoom the map to a location
+    private func centerMap(coordinates coord:CLLocationCoordinate2D!)
     {
         // set map view region
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-        let viewRegion:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue)
+        let viewRegion:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coord, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue, Constants.DISTANCES.RadiusInMile.rawValue * Constants.DISTANCES.MetersPerMile.rawValue)
         self.map?.setRegion(viewRegion, animated: false)
         
         // offset center of map
-        var center:CLLocationCoordinate2D = location
-        center.latitude += self.map!.region.span.latitudeDelta * 0.35
-        self.map?.setCenterCoordinate(center, animated: false)
+        let offsetCenter:CLLocationCoordinate2D = self.getCoordinateWithOffset(coordinates: coord)
+        self.map?.setCenterCoordinate(offsetCenter, animated: false)
+    }
+    
+    // move check-in marker to center of map
+    private func centerMarker(coodinates coord:CLLocationCoordinate2D!)
+    {
+        //self.map?.removeAnnotation(self.checkInMarker)
+        if self.checkInMarker == nil {
+            self.checkInMarker = MKPointAnnotation()
+            self.checkInMarker?.setCoordinate(coord)
+            self.checkInMarker?.title = "Big Ben"
+            self.checkInMarker?.subtitle = "London"
+            self.map?.addAnnotation(self.checkInMarker)
+        }
         
-        // update the centered address
-        self.getAddressFromLocation(latitude: lat, longitude: lng, onAddress: {(address:String!) -> Void in
-            self.checkInAddress!.text = address
+        UIView.animateWithDuration(0.25, animations: {() -> Void in
+            self.checkInMarker!.setCoordinate(coord)
         })
-        
-        // add checkin annotation
-        self.map?.removeAnnotation(self.checkInMarker)
-        self.checkInMarker = MKPointAnnotation()
-        self.checkInMarker?.setCoordinate(location)
-        self.checkInMarker?.title = "Big Ben"
-        self.checkInMarker?.subtitle = "London"
-        self.map?.addAnnotation(self.checkInMarker)
     }
     
     // update address by reverse geocoding a latitude and longitude
-    private func getAddressFromLocation(latitude lat:CLLocationDegrees!, longitude lng:CLLocationDegrees!, onAddress:((address:String!)->Void)?)
+    private func getAddressFromLocation(coordinate coord:CLLocationCoordinate2D!, onAddress:((address:String!)->Void)?)
     {
-        let location:CLLocation = CLLocation(latitude: lat, longitude: lng)
+        let location:CLLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
         let geoCoder:CLGeocoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location, completionHandler: {(placemarks:[AnyObject]!, error:NSError!) -> Void in
             
@@ -189,6 +192,56 @@ class MapViewController:FormViewController, CLLocationManagerDelegate
             }
             
         })
+    }
+    
+    // MARK: map center change, replot checkin marker
+    func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+        let adjustedCoord:CLLocationCoordinate2D = self.getCoordinateWithoutOffset(coordinates: self.map!.centerCoordinate)
+        self.currentLocation = adjustedCoord
+        self.centerMarker(coodinates: adjustedCoord)
+        
+        // update the centered address
+        self.getAddressFromLocation(coordinate: adjustedCoord, onAddress: {(address:String!) -> Void in
+            self.checkInAddress!.text = address
+        })
+    }
+    
+    // MARK: animated newly added annotation view
+    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!)
+    {
+        let bounce:CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        bounce.values = [0.01, 1.1, 0.8, 1.0]
+        bounce.keyTimes = [0.0, 0.5, 0.75, 1.0]
+        bounce.duration = 0.25
+        
+        for view:MKAnnotationView in views as [MKAnnotationView] {
+            let endFrame:CGRect = view.frame
+            view.frame = CGRectOffset(endFrame, 0, -500)
+            view.alpha = 0
+            
+            UIView.animateWithDuration(0.35, delay: 0.5, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {() -> Void in
+                
+                view.frame = endFrame
+                view.alpha = 1.0
+                
+                }, completion: {(finished:Bool) -> Void in
+                    view.layer.addAnimation(bounce, forKey: "bounce")
+                })
+        }
+    }
+    
+    // calculate the coordinates with the map position offset
+    private func getCoordinateWithOffset(coordinates coord:CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        var loc:CLLocationCoordinate2D = coord
+        loc.latitude += self.map!.region.span.latitudeDelta * MapOffsetLongitude
+        return loc
+    }
+    
+    // calculate the coordinates without the map position offset
+    private func getCoordinateWithoutOffset(coordinates coord:CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        var loc:CLLocationCoordinate2D = coord
+        loc.latitude -= self.map!.region.span.latitudeDelta * MapOffsetLongitude
+        return loc
     }
     
 }
